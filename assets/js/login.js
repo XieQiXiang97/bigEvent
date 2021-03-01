@@ -47,7 +47,8 @@ $(function () {
             }
         });
     })
-    $('#form-login').on('sunmit', function () {
+    $('#form-login').on('submit', function (e) {
+        e.preventDefault()
         $.ajax({
             type: "post",
             url: "/api/login",
