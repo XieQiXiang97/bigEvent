@@ -25,10 +25,14 @@ $(function () {
         $.ajax({
             type: "post",
             url: "/api/login",
-            data: "data",
-            dataType: "dataType",
-            success: function (response) {
-                
+            data: $(this).serialize(),
+            success: function (res) {
+                if (res.status !== 0) {
+                    return layer.msg('登录失败！')
+                }
+                layer.msg('登陆成功！')
+                localStorage.setItem('token', res.token)
+                location.href = "/index.html"
             }
         });
     })
