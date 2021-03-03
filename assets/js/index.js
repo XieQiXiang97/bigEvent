@@ -4,14 +4,14 @@ $(function () {
     var layer = layui.layer
     // 点击退出按钮
     $('#btnLogout').on('click', function () {
-        layer.confirm('确定退出登录？', { icon: 3, title: '提示' }),
+        layer.confirm('确定退出登录？', { icon: 3, title: '提示' },
             function (index) {
-            // 清空token
+                // 清空token
                 localStorage.removeItem('token')
                 // 返回login
-            location.href = '/login.html'
-            layer.close(index)
-        }
+                location.href = '/login.html'
+                layer.close(index)
+            })
     })
 })
 
@@ -23,7 +23,7 @@ function getUserinfo() {
         type: "get",
         url: "/my/userinfo",
         headers: {
-            Authorization:localStorage.getItem('token'||'')
+            Authorization: localStorage.getItem('token' || '')
         },
         success: function (res) {
             console.log(res);
